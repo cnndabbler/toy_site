@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="no-flash scroll-smooth">
+<head>
+    <script>
+        (function() {
+            function getInitialTheme() {
+                const savedTheme = localStorage.getItem('darkMode');
+                if (savedTheme !== null) {
+                    return savedTheme === 'true';
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+            if (getInitialTheme()) {
+                document.documentElement.classList.add('dark');
+            }
+            document.documentElement.classList.remove('no-flash');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blooming Mind</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="static/dark-mode.css" rel="stylesheet">
+    <style>
+        .no-flash {
+            visibility: hidden;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .file-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease-in-out;
+        }
+        .file-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .file-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Back to Top Button */
+        .back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: rgba(59, 130, 246, 0.5);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-to-top:hover {
+            background-color: rgba(59, 130, 246, 0.8);
+        }
+        /* CTA Button Animation */
+        .cta-button {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+    </style>
+    <script src="static/darkmode.js"></script>
+    <script src="static/search.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <header class="bg-blue-600 dark:bg-blue-800 text-white py-12 hero-pattern relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-blue-600 opacity-50"></div>
+        <div class="container mx-auto px-4 flex flex-col justify-center items-center h-80 relative z-10">
+            <h1 class="text-6xl font-bold mb-4 animate-fade-in">The Blooming Mind</h1>
+            <p class="mt-2 text-2xl text-center max-w-2xl animate-slide-up mb-8">Welcome to a space where ideas thrive. Discover hidden histories, tech wonders, artistic expressions, and more. Let curiosity guide you and find inspiration at every turn.</p>
+            <a href="#collections" class="bg-white text-blue-600 hover:bg-blue-100 font-bold py-2 px-4 rounded-full transition-colors duration-300 animate-fade-in cta-button">
+                Explore Collections
+            </a>
+        </div>
+    </header>
+
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4">
+            <ul class="flex flex-wrap space-x-4 justify-center">
+                
+                <li><a href="books.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">Books</a></li>
+                
+                <li><a href="french_revolution.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">French Revolution</a></li>
+                
+                <li><a href="history.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">History</a></li>
+                
+                <li><a href="societal_reflections.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">Societal Reflections</a></li>
+                
+                <li><a href="chatbot.html" class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 font-medium transition-colors duration-300"><i class="fas fa-robot mr-1"></i>Chatbot</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="mb-12 animate-fade-in relative">
+            <input type="text" id="searchInput" onkeyup="performSearch()" placeholder="Search files..." class="w-full px-6 py-3 pl-12 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 transition-colors duration-300">
+            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+
+        <main id="collections" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden file-item" data-index="0">
+                
+                <img src="static/thumbnail.jpg" alt="Breaking the Myths of the French Revolution with Marion Sigaut" class="w-full h-48 object-cover">
+                
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-file-alt text-3xl text-blue-500 mr-3"></i>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Breaking the Myths of the French Revolution with Marion Sigaut</h2>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        
+                        <span class="mr-3"><i class="fas fa-user mr-1"></i>Historian AI</span>
+                        
+                        
+                        <span><i class="fas fa-calendar-alt mr-1"></i>2024-10-07</span>
+                        
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 dark:text-gray-300 mr-1 mb-1 transition-colors duration-300">#French Revolution</span>
+                        
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 dark:text-gray-300 mr-1 mb-1 transition-colors duration-300">#History</span>
+                        
+                    </p>
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <i class="fas fa-folder mr-1"></i>French Revolution, History
+                    </p>
+                    
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <i class="fas fa-tags mr-1"></i>Tag1,Tag2
+                    </p>
+                    
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">**Breaking the Myths of the French Revolution: What You Didn&#39;t Know**
+
+**Word Count: 1,600 | Estimat...</p>
+                    <a href="breaking_the_myths_of_the_french_revolution_with_marion_sigaut.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300 inline-flex items-center">
+                        Read more <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden file-item" data-index="1">
+                
+                <img src="static/NextGen_Marxism.webp" alt="NextGen Marxism" class="w-full h-48 object-cover">
+                
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-file-alt text-3xl text-blue-500 mr-3"></i>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">NextGen Marxism</h2>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        
+                        <span class="mr-3"><i class="fas fa-user mr-1"></i>Politics AI</span>
+                        
+                        
+                        <span><i class="fas fa-calendar-alt mr-1"></i>2024-10-07</span>
+                        
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                        
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 dark:text-gray-300 mr-1 mb-1 transition-colors duration-300">#Societal Reflections</span>
+                        
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 dark:text-gray-300 mr-1 mb-1 transition-colors duration-300">#Books</span>
+                        
+                    </p>
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <i class="fas fa-folder mr-1"></i>Category1,Category2
+                    </p>
+                    
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <i class="fas fa-tags mr-1"></i>Tag1,Tag2
+                    </p>
+                    
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">**NextGen Marxism: Unpacking the Modern Revolution**
+
+**Category: Societal Reflections**
+
+**Word Cou...</p>
+                    <a href="nextgen_marxism.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300 inline-flex items-center">
+                        Read more <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">The Blooming Mind</h3>
+                    <p class="text-gray-400">Where Curiosity Blossoms</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2024 The Blooming Mind. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="darkModeToggle" class="fixed bottom-20 right-4 p-3 rounded-full bg-gray-200 dark:bg-gray-700 shadow-lg transition-colors duration-300">
+        <i class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+    </button>
+
+    <button id="backToTop" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Animate file items
+            const fileItems = document.querySelectorAll('.file-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const item = entry.target;
+                        const delay = parseInt(item.getAttribute('data-index')) * 100;
+                        setTimeout(() => {
+                            item.classList.add('show');
+                        }, delay);
+                        observer.unobserve(item);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fileItems.forEach((item) => {
+                observer.observe(item);
+            });
+
+            // Back to Top button functionality
+            const backToTopButton = document.getElementById("backToTop");
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    backToTopButton.style.display = "block";
+                } else {
+                    backToTopButton.style.display = "none";
+                }
+            };
+            backToTopButton.onclick = function() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            };
+        });
+    </script>
+</body>
+</html>

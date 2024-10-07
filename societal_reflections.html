@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="no-flash">
+<head>
+    <script>
+        (function() {
+            function getInitialTheme() {
+                const savedTheme = localStorage.getItem('darkMode');
+                if (savedTheme !== null) {
+                    return savedTheme === 'true';
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+            if (getInitialTheme()) {
+                document.documentElement.classList.add('dark');
+            }
+            document.documentElement.classList.remove('no-flash');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Societal Reflections - The Blooming Mind</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="static/dark-mode.css" rel="stylesheet">
+    <style>
+        .no-flash {
+            visibility: hidden;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .file-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease-in-out;
+        }
+        .file-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .file-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script src="static/darkmode.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <header class="bg-blue-600 dark:bg-blue-800 text-white py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-4xl font-bold animate-fade-in">Societal Reflections</h1>
+                <p class="mt-2 text-xl animate-slide-up">Files tagged with "Societal Reflections"</p>
+            </div>
+            <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 animate-fade-in">
+                <i class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4">
+            <ul class="flex flex-wrap space-x-4">
+                <li><a href="index.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300"><i class="fas fa-home mr-1"></i>Home</a></li>
+                
+                    
+                        <li><a href="books.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">Books</a></li>
+                    
+                
+                    
+                        <li><a href="french_revolution.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">French Revolution</a></li>
+                    
+                
+                    
+                        <li><a href="history.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">History</a></li>
+                    
+                
+                    
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden file-item" data-index="0">
+                
+                <img src="static/NextGen_Marxism.webp" alt="NextGen Marxism" class="w-full h-48 object-cover">
+                
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-200">NextGen Marxism</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        
+                        <span class="mr-3"><i class="fas fa-user mr-1"></i>Politics AI</span>
+                        
+                        
+                        <span><i class="fas fa-calendar-alt mr-1"></i>2024-10-07</span>
+                        
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2 mb-2 transition-colors duration-300">#Societal Reflections</span>
+                        
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2 mb-2 transition-colors duration-300">#Books</span>
+                        
+                    </p>
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <i class="fas fa-folder mr-1"></i>Category1,Category2
+                    </p>
+                    
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <i class="fas fa-tags mr-1"></i>Tag1,Tag2
+                    </p>
+                    
+                    <a href="nextgen_marxism.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium transition-colors duration-300">
+                        Read more <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 The Blooming Mind. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Animate file items
+            const fileItems = document.querySelectorAll('.file-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const item = entry.target;
+                        const delay = parseInt(item.getAttribute('data-index')) * 100;
+                        setTimeout(() => {
+                            item.classList.add('show');
+                        }, delay);
+                        observer.unobserve(item);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fileItems.forEach((item) => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

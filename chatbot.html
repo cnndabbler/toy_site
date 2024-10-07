@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="no-flash">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot - My Personal Garden</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="static/dark-mode.css" rel="stylesheet">
+    <script type="module" src="static/chatbot.js"></script>   
+    <style>
+        .no-flash { visibility: hidden; }
+        body { opacity: 0; transition: opacity 0.5s; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '1';
+        });
+    </script>
+    <script>
+        (function() {
+            function getInitialTheme() {
+                const savedTheme = localStorage.getItem('darkMode');
+                if (savedTheme !== null) {
+                    return savedTheme === 'true';
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+            if (getInitialTheme()) {
+                document.documentElement.classList.add('dark');
+            }
+            document.documentElement.classList.remove('no-flash');
+        })();
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <header class="bg-blue-600 dark:bg-blue-800 text-white py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-4xl font-bold">RAG Chatbot</h1>
+                <p class="mt-2 text-xl">Ask questions about our content</p>
+            </div>
+            <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <i class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <ul class="flex flex-wrap space-x-4">
+                <li><a href="index.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 font-medium"><i class="fas fa-home mr-1"></i>Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden p-6">
+            <div id="chat-container" class="mb-4 h-64 overflow-y-auto border border-gray-300 dark:border-gray-700 p-2 rounded"></div>
+            <div class="flex">
+                <input type="text" id="user-input" class="flex-grow border border-gray-300 dark:border-gray-700 rounded-l px-2 py-1 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100" placeholder="Type your message...">
+                <button id="send-btn" class="bg-blue-500 text-white px-4 py-1 rounded-r hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 My Personal Garden. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+    <script src="static/darkmode.js"></script>
+</body>
+</html>
